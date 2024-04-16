@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 7 (Mostrar impares)
     Generar una aplicación que permita cargar los primeros 10 números impares en un Array.
@@ -7,8 +10,6 @@
 
     Guido Insua  
 */
-<br>
-<?php
 
 $arrayImpar = array();
 $numImpar = 1;

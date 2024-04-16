@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 10 (Arrays de Arrays)
     Realizar las líneas de código necesarias para generar un Array asociativo y otro indexado que
@@ -6,8 +9,6 @@
 
     Guido Insua  
 */
-<br>
-<?php
 
 $indexado = array(
     array("Color" => "Rojo", "Marca" => "Faber castel", "Trazo" => "Fino", "Precio" => "$800"),

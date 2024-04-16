@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 3 (Obtener el valor del medio)
     Dadas tres variables numéricas de tipo entero $a, $b y $c realizar una aplicación que muestre
@@ -16,8 +19,34 @@
 
     Guido Insua  
 */
-<br>
-<?php
+
+$a = rand(0, 100);
+$b = rand(0, 100);
+$c = rand(0, 100);
+
+echo $a."-".$b."-".$c;
+
+if($a == $b || $a == $c || $b == $c)
+{
+    echo "<br>No hay numero del medio";
+}
+else
+{
+    if($a > $b && $a < $c || $a < $b && $a > $c)
+    {
+        echo "<br>" . $a;
+        return;
+    }
+
+    if($b > $a && $b < $c || $b < $a && $b > $c)
+    {
+        echo "<br>" . $b;
+        return;
+    }
+    echo "<br>" . $c;
+}
+
+/*
 $a = 1;
 $b = 5;
 $c = 1;
@@ -34,4 +63,6 @@ else
 {
     echo "No hay valor del medio";
 }
+*/
 ?>
+

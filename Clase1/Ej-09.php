@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 9 (Arrays asociativos)
     Realizar las líneas de código necesarias para generar un Array asociativo $lapicera, que
@@ -6,8 +9,6 @@
 
     Guido Insua  
 */
-<br>
-<?php
 
 $lapiceras = array(
     array("Color" => "Rojo", "Marca" => "Faber castel", "Trazo" => "Fino", "Precio" => "$800"),

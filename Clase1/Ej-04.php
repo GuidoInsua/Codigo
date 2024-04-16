@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 4 (Calculadora)
     Escribir un programa que use la variable $operador que pueda almacenar los símbolos
@@ -7,32 +10,39 @@
 
     Guido Insua  
 */
-<br>
-<?php
 
-$operador = "y";
-$op1 = 1;
-$op2 = 3;
-$res = 0;
+$operador = '/';
+$op1 = rand(0, 100);
+$op2 = rand(0, 100);
+$resultado;
 
 switch($operador)
 {
-    case "+":
-        $res = $op1 + $op2;
-    break;
+    case '+':
+        $resultado = $op1 + $op2;
+        break;
+    
+    case '-':
+        $resultado = $op1 - $op2;
+        break;
+    
+    case '/':
+        if($op2 != 0)
+        {
+            $resultado = $op1 / $op2;
+        }
+        else
+        {
+            $resultado = "ERROR";
+        }
+        break;
 
-    case "-":
-        $res = $op1 + $op2;
-    break;
-
-    case "*":
-        $res = $op1 + $op2;
-    break;
-
-    case "/":
-        $res = $op1 + $op2;
-    break;
+    case '*':
+        $resultado = $op1 = $op2;
+        break;
 }
 
-echo "El resultado es: " . $res;
+echo $op1 . $operador . $op2 . "<br>";
+echo $resultado;
+
 ?>

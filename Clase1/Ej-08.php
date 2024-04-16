@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 8 (Carga aleatoria)
     Imprima los valores del vector asociativo siguiente usando la estructura de control foreach:
@@ -5,8 +8,6 @@
 
     Guido Insua  
 */
-<br>
-<?php
 
 $v[1] = 90;
 $v[30] = 7;

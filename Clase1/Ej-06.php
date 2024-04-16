@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 6 (Carga aleatoria)
     Definir un Array de 5 elementos enteros y asignar a cada uno de ellos un número (utilizar la
@@ -7,8 +10,6 @@
 
     Guido Insua  
 */
-<br>
-<?php
 
 $vec = array(0,0,0,0,0);
 $mayor = 0;

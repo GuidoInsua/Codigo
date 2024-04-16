@@ -1,3 +1,6 @@
+
+<?php
+
 /*
     Aplicación No 1 (Sumar números)
     Confeccionar un programa que sume todos los números enteros desde 1 mientras la suma no
@@ -6,8 +9,6 @@
 
     Guido Insua  
 */
-
-<?php
 
 $numero = 0;
 $suma = 1;
