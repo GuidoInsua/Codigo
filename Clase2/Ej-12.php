@@ -6,7 +6,7 @@
     de las letras del Array.
     Ejemplo: Se recibe la palabra “HOLA” y luego queda “ALOH”.
 
-    Guido Insua
+    Guido Insua.
 */
 
 $array1 = array('H','O','L','A');
