@@ -37,12 +37,42 @@
 
 require "auto.php";
 
-$unAuto = new auto("rojo", 1000);
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
-auto::mostrarAuto($unAuto);
+$fecha = new DateTime('2000-03-11');
 
-$unAuto->agregarImpuestos(100);
+$auto1 = new auto("rojo", 16345, "Peugeot");
+$auto2 = new auto("Blanco", 39831, "Peugeot");
 
-auto::mostrarAuto($unAuto);
+$auto3 = new auto("Gris", 57112, "Chevrolet");
+$auto4 = new auto("Gris", 37555, "Chevrolet");
+
+$auto5 = new auto("Negro", 73256, "Fiat", $fecha);
+
+$sumaAuto1Auto2 = 0;
+
+//-----------------------------------------------------------
+
+$auto3->agregarImpuestos(1500);
+$auto4->agregarImpuestos(1500);
+$auto5->agregarImpuestos(1500);
+
+$sumaAuto1Auto2 = auto::add($auto1, $auto2);
+echo $sumaAuto1Auto2 . "<br>";
+
+if($auto1->equals($auto5))
+{
+    echo "El auto1 y el auto5 son iguales";
+}
+else
+{
+    echo "El auto1 y el auto5 no son iguales";
+}
+
+echo "<br>";
+
+auto::mostrarAuto($auto1);
+auto::mostrarAuto($auto3);
+auto::mostrarAuto($auto5);
 
 ?>
