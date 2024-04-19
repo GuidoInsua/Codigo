@@ -10,7 +10,7 @@
     pertenece a algún elemento del listado.
     0 en caso contrario.
 
-    Guido Insua.
+    Guido Insua
 */
 
 $palabra = "Recuperatorio";
