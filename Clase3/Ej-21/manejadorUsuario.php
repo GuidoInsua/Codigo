@@ -25,7 +25,9 @@ class manejadorUsuarios
         }
         try {
             while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+                if(count($data) == 3) {
                 $usuarios[] = new Usuario($data[0], $data[1], $data[2]);
+                }
             }
         } finally {
             fclose($handle);
