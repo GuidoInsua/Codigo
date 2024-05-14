@@ -38,7 +38,7 @@ class manejadorUsuarios
     public function existeUsuarioEnLista(usuario $usuario) {
         $usuarios = $this->obtenerUsuarios();
         foreach ($usuarios as $usuarioRegistrado) {
-            if ($usuarioRegistrado->getMail() === $usuario->getMail() && $usuarioRegistrado->getClave() === $usuario->getClave()){
+            if ($usuarioRegistrado->getMail() === $usuario->getMail()){
                 return true;
             }
         }

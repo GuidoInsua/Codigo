@@ -1,0 +1,37 @@
+[
+    {
+        "nombre": "agus",
+        "clave": "123",
+        "mail": "insua.guido@gmail.com",
+        "id": 7166,
+        "fecha_registro": "2024-05-14 00:31:46"
+    },
+    {
+        "nombre": "guido",
+        "clave": "23412",
+        "mail": "insua.guido@gmail.com",
+        "id": 3122,
+        "fecha_registro": "2024-05-14 00:31:48"
+    },
+    {
+        "nombre": "agus",
+        "clave": "123",
+        "mail": "insua.guido@gmail.com",
+        "id": 8497,
+        "fecha_registro": "2024-05-14 16:38:22"
+    },
+    {
+        "nombre": "guido",
+        "clave": "123",
+        "mail": "indua.guido@gmail.com",
+        "id": 1335,
+        "fecha_registro": "2024-05-14 17:05:15"
+    },
+    {
+        "nombre": "guido",
+        "clave": "123",
+        "mail": "indua.guido@gmail.comdasd",
+        "id": 5670,
+        "fecha_registro": "2024-05-14 17:06:33"
+    }
+]
