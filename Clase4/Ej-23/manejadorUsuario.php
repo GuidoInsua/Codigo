@@ -13,26 +13,20 @@ class manejadorUsuarios
     }
 
     public function agregarUsuario(Usuario $usuario) {
-        // Leer el contenido actual del archivo JSON
         $usuarios = [];
         $json_contenido = file_get_contents($this->_archivo);
         if ($json_contenido !== false) {
             $usuarios = json_decode($json_contenido, true);
         }
-        
-        // Generar un ID autoincremental emulado
+
         $usuarioArray = $usuario->toArray();
         $usuarioArray['id'] = rand(1, 10000);
-        // Agregar la fecha de registro
         $usuarioArray['fecha_registro'] = date('Y-m-d H:i:s');
         
-        // Agregar el nuevo usuario al array
         $usuarios[] = $usuarioArray;
-    
-        // Codificar el array completo como JSON
+
         $usuarios_json = json_encode($usuarios, JSON_PRETTY_PRINT);
-    
-        // Escribir el JSON completo de usuarios de vuelta al archivo
+
         if (file_put_contents($this->_archivo, $usuarios_json) === false) {
             throw new Exception("Error al agregar el usuario al archivo.");
         }

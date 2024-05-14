@@ -61,22 +61,4 @@ if ($manejador->existeUsuarioEnLista($nuevoUsuario)) {
     }
 }
 
-
-/*
-// Crear instancia de ManejadorUsuarios
-
-// Verificar si el usuario ya existe
-if ($manejador->existeUsuarioEnLista($nuevoUsuario)) {
-    echo "El usuario ya está registrado.";
-} else {
-    // Agregar el nuevo usuario
-    try {
-        $manejador->agregarUsuario($nuevoUsuario);
-        echo "Usuario registrado exitosamente.";
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
-
-*/
 ?>

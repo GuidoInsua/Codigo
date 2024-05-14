@@ -1,7 +1,7 @@
 <?php
 
 /*
-    Aplicación No 22 ( Login)
+    Aplicación No 22 (Login)
     Archivo: Login.php
     método:POST
     Recibe los datos del usuario(clave, mail) por POST ,crear un objeto y utilizar sus métodos para poder verificar si es un usuario registrado. 
