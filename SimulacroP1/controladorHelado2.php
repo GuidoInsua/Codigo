@@ -67,6 +67,17 @@ class controladorHelado
         return $helados;
     }
 
+    public function guardarHelados($helados)
+
+    {
+        $helados_json = json_encode($helados, JSON_PRETTY_PRINT);
+        if (file_put_contents($this->_archivo, $helados_json) === false) {
+            throw new Exception("Error al guardar los helados en el archivo.");
+        }
+
+        //tengo problemas con los datos que no son propios del helado
+    }
+
     public function existeHeladoEnLista(helado $helado, &$indice) {
         $helados = $this->obtenerHelados();
         foreach ($helados as $key => $heladoRegistrado) {

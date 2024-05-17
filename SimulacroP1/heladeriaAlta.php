@@ -5,10 +5,8 @@ require_once "controladorHelado.php";
 class HeladeriaAlta{
 
     private controladorHelado $_controlador;
-    private $_archivo;
 
     public function __construct($archivo) {
-        $this->_archivo = $archivo;
         $this->_controlador = controladorHelado::getInstance($archivo);
     }
 

@@ -39,6 +39,19 @@ switch ($solicitud) {
 
         break;
     default:
+    case 'AltaVenta':
+        if (!isset($_POST["email"]) || !isset($_POST["sabor"]) || !isset($_POST["tipo"]) || !isset($_POST["stock"])) {
+            exit;
+        }
+
+        $nuevoHelado = new helado($_POST["sabor"], 0, $_POST["tipo"], "", $_POST["stock"]);
+
+        $altaVenta = new altaVenta("heladeria.json");
+
+        $altaVenta->darAltaVenta($nuevoHelado);
+
+        break;
+    default:
         echo "404 Error: Solicitud no encontrada.";
         exit;
         
