@@ -99,12 +99,18 @@ class controladorHelado
         $productos = json_decode($jsonString, true); 
     
         if ($indice >= 0 && $indice < count($productos)) {
+if ($productos[$indice]['stock'] < $stock){
+return false;
+}
+else{
             $productos[$indice]['stock'] -= $stock;
+}
 
             $nuevoJsonString = json_encode($productos, JSON_PRETTY_PRINT);
             if (file_put_contents($this->_archivo, $nuevoJsonString) === false) {
                 throw new Exception("Error al modificar el stock del helado en el archivo.");
             }
+return true;
         } else {
             throw new Exception("No se encontró ningún helado con el ID proporcionado.");
         }
