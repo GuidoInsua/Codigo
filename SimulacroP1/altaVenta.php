@@ -12,12 +12,15 @@ class altaVenta{
 
     public function darAltaVenta(helado $helado){
         if ($this->_controlador->existeHeladoEnLista($helado, $indice)) {
-            
-            $this->_controlador->disminuirStockHelado($helado->getStock(), $indice);
-            echo "venta realizada";
-            exit;
-        } else {
-            echo "no hay helado";
+            if($this->_controlador->disminuirStockHelado($helado->getStock(), $indice)){
+                echo "venta realizada";
+            }
+            else {
+                echo "Stock insuficiente";
+            }
+        }
+        else {
+            echo "no existe helado";
             exit;
         }
     }
