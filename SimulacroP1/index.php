@@ -2,6 +2,7 @@
 
 require_once "heladeriaAlta.php";
 require_once "heladoConsultar.php";
+require_once "altaVenta.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo "405 Error: Método no permitido. Esta API solo acepta solicitudes POST.";
@@ -38,7 +39,6 @@ switch ($solicitud) {
         $heladoConsultar->consultarExistenciaHelado($_POST["sabor"], $_POST["tipo"]);
 
         break;
-    default:
     case 'AltaVenta':
         if (!isset($_POST["email"]) || !isset($_POST["sabor"]) || !isset($_POST["tipo"]) || !isset($_POST["stock"])) {
             exit;
