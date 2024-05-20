@@ -1,0 +1,30 @@
+[
+    {
+        "sabor": "Pera",
+        "precio": 12341,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 52
+    },
+    {
+        "sabor": "Chocolate",
+        "precio": 12341,
+        "tipo": "Crema",
+        "vaso": "Cucurucho",
+        "stock": 52
+    },
+    {
+        "sabor": "Vainilla",
+        "precio": 12341,
+        "tipo": "Crema",
+        "vaso": "Cucurucho",
+        "stock": 26
+    },
+    {
+        "sabor": "Frutilla",
+        "precio": 12341,
+        "tipo": "Crema",
+        "vaso": "Cucurucho",
+        "stock": 39
+    }
+]

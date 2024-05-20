@@ -1,8 +1,7 @@
 <?php
 
+require_once "helado.php";
 require_once "heladeriaAlta.php";
-require_once "heladoConsultar.php";
-require_once "altaVenta.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo "405 Error: Método no permitido. Esta API solo acepta solicitudes POST.";
@@ -24,9 +23,8 @@ switch ($solicitud) {
         }
 
         $nuevoHelado = new helado($_POST["sabor"], $_POST["precio"], $_POST["tipo"], $_POST["vaso"], $_POST["stock"]);
-        $heladeriaAlta = new HeladeriaAlta("heladeria.json");
 
-        $heladeriaAlta->darAltaHelado($nuevoHelado);
+        heladeriaAlta::darAltaHelado("Jsons\heladeria.json", $nuevoHelado);
 
         break;
     case 'HeladoConsultar':
@@ -34,9 +32,9 @@ switch ($solicitud) {
             exit;
         }
 
-        $heladoConsultar = new heladoConsultar("heladeria.json");
+        //$heladoConsultar = new heladoConsultar("heladeria.json");
 
-        $heladoConsultar->consultarExistenciaHelado($_POST["sabor"], $_POST["tipo"]);
+        //$heladoConsultar->consultarExistenciaHelado($_POST["sabor"], $_POST["tipo"]);
 
         break;
     case 'AltaVenta':
@@ -44,11 +42,11 @@ switch ($solicitud) {
             exit;
         }
 
-        $nuevoHelado = new helado($_POST["sabor"], 0, $_POST["tipo"], "", $_POST["stock"]);
+        //$nuevoHelado = new helado($_POST["sabor"], 0, $_POST["tipo"], "", $_POST["stock"]);
 
-        $altaVenta = new altaVenta("heladeria.json");
+        //$altaVenta = new altaVenta("heladeria.json");
 
-        $altaVenta->darAltaVenta($nuevoHelado);
+        //$altaVenta->darAltaVenta($nuevoHelado);
 
         break;
     default:

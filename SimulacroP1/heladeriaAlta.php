@@ -1,26 +1,44 @@
 <?php
 
-require_once "controladorHelado.php";
+require_once "helado.php";
+require_once "controladorJson.php";
 
-class HeladeriaAlta{
+class heladeriaAlta{
 
-    private controladorHelado $_controlador;
+    public static function darAltaHelado($archivo, helado $nuevoHelado){
+        $controlador = controladorJson::getInstance($archivo);
 
-    public function __construct($archivo) {
-        $this->_controlador = controladorHelado::getInstance($archivo);
+        $helados = $controlador->convertirRegistrosEnObjetos("helado");
+
+        foreach ($helados as $helado) {
+            if ($nuevoHelado->equals($helado)) {
+                $nuevoStock = $helado->getStock() + $nuevoHelado->getStock();
+                $helado->setStock($nuevoStock);
+                $controlador->actualizarRegistrosEnArchivo($helados);
+                exit;
+            }
+        }
+
+        $controlador->agregarRegistroAlArchivo($nuevoHelado);
     }
 
-    public function darAltaHelado(helado $helado){
-        if ($this->_controlador->existeHeladoEnLista($helado, $indice)) {
-            $this->_controlador->aumentarStockHelado($helado->getStock(), $indice);
+    /*
+
+    public static function darAltaHelado2($archivo, helado $helado){
+        $controlador = controladorJson::getInstance($archivo);
+
+        if ($controlador->existeHeladoEnLista($helado)) {
+            $$controlador->aumentarStockHelado($helado->getStock());
             echo "El helado ya existe, se ha aumentado el stock.";
             exit;
         } else {
-            $this->_controlador->agregarHelado($helado);
+            $controlador->agregarHelado($helado);
             echo "Helado agregado correctamente.";
             exit;
         }
     }
+
+    */
 }
 
 ?>
