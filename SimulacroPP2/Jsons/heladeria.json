@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "sabor": "Frutilla",
+        "precio": 12313,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 46
+    },
+    {
+        "id": 2,
+        "sabor": "Coco",
+        "precio": 12313,
+        "tipo": "Crema",
+        "vaso": "Cucurucho",
+        "stock": 67
+    },
+    {
+        "id": 3,
+        "sabor": "Chocolate",
+        "precio": 12313,
+        "tipo": "Crema",
+        "vaso": "Cucurucho",
+        "stock": 17
+    }
+]

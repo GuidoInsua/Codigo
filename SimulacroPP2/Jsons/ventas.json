@@ -1,0 +1,30 @@
+[
+    {
+        "fecha": "2025-05-21",
+        "numeroDePedido": 579,
+        "id": 3,
+        "cantidadVendida": 2,
+        "usaurio": "guido.insua"
+    },
+    {
+        "fecha": "2023-05-21",
+        "numeroDePedido": 944,
+        "id": 3,
+        "cantidadVendida": 2,
+        "usaurio": "guido.insua"
+    },
+    {
+        "fecha": "2024-05-21",
+        "numeroDePedido": 475,
+        "id": 3,
+        "cantidadVendida": 2,
+        "usaurio": "pepe"
+    },
+    {
+        "fecha": "2021-05-21",
+        "numeroDePedido": 74,
+        "id": 2,
+        "cantidadVendida": 2,
+        "usaurio": "pepe"
+    }
+]
