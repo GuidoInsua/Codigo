@@ -41,10 +41,10 @@ class helado implements JsonSerializable, jsonDeserializable{
         );
     }
 
-    public function equals($unObjeto)
+    public function equals(helado $unHelado)
     {
-        if($unObjeto instanceof helado){
-            if ($unObjeto->getSabor() === $this->getSabor() && $unObjeto->getTipo() === $this->getTipo()) {
+        if($unHelado instanceof helado){
+            if ($unHelado->getSabor() === $this->getSabor() && $unHelado->getTipo() === $this->getTipo()) {
                 return true;
             }
         }

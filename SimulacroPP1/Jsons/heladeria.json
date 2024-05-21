@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "sabor": "Pera",
+        "precio": 787634,
+        "tipo": "Crema",
+        "vaso": "Plastico",
+        "stock": 132
+    },
+    {
+        "id": 2,
+        "sabor": "Chocolate",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 44
+    },
+    {
+        "id": 3,
+        "sabor": "Frutilla",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 11
+    },
+    {
+        "id": 4,
+        "sabor": "Mango",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 22
+    },
+    {
+        "id": 5,
+        "sabor": "Mora",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 11
+    },
+    {
+        "id": 6,
+        "sabor": "Limon",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 33
+    },
+    {
+        "id": 7,
+        "sabor": "Dulce de leche",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 22
+    },
+    {
+        "id": 8,
+        "sabor": "Dulce",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 11
+    },
+    {
+        "id": 9,
+        "sabor": "Banana",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 7
+    },
+    {
+        "id": 10,
+        "sabor": "Banano",
+        "precio": 34526,
+        "tipo": "Agua",
+        "vaso": "Cucurucho",
+        "stock": 11
+    }
+]

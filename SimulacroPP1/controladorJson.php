@@ -6,10 +6,10 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class controladorJson
 {
-    private static $_instancia;
+    //private static $_instancia;
     private $_archivo;
 
-    private function __construct($archivo) {
+    public function __construct($archivo) {
         // Verificar si $archivo es una cadena no vacía y válida
         if (!is_string($archivo) || empty($archivo)) {
             throw new Exception("Nombre de archivo inválido.");
@@ -31,6 +31,7 @@ class controladorJson
         $this->_archivo = $archivo;
     }
 
+    /*
     public static function getInstance($archivo) {
         // Verifica si ya existe una instancia
         if (self::$_instancia === null) {
@@ -39,7 +40,7 @@ class controladorJson
         }
         // Devuelve la instancia existente o recién creada
         return self::$_instancia;
-    }
+    } */
 
     private function obtenerRegistrosDesdeArchivo() {
         // Lee el contenido del archivo JSON
@@ -152,26 +153,34 @@ class controladorJson
             }
         }
     }
-}
 
-/*
-
-private function obtenerSiguienteId() {
-    // Leer los registros existentes del archivo
-    $registros = $this->obtenerRegistrosDesdeArchivo();
-
-    // Obtener el mayor índice
-    $maxIndice = 0;
-    foreach ($registros as $registro) {
-        if (isset($registro->id) && $registro->id > $maxIndice) {
-            $maxIndice = $registro->id;
+    // Nada que ver con json, pero bueno
+    public static function cargarFoto($archivo, $nombre, $destino)
+    {
+        try {
+            if (isset($archivo) && $archivo['error'] === UPLOAD_ERR_OK) {
+                
+                // Obtiene la extensión del archivo original
+                $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION);
+                
+                // Agrega la extensión al nombre específico
+                $imagen_nombre_con_extension = $nombre . '.' . $extension;
+                
+                // Nombre temporal del archivo en el servidor
+                $imagen_tmp_name = $archivo['tmp_name'];
+                
+                // Mueve el archivo desde la ubicación temporal a la carpeta de destino con el nuevo nombre
+                if (!move_uploaded_file($imagen_tmp_name, $destino . $imagen_nombre_con_extension)) {
+                    throw new Exception("No se pudo subir la imagen.");
+                }
+            } else {
+                throw new Exception("Archivo inválido o error en la carga.");
+            }
+        } catch (Exception $e) {
+            throw new Exception("Error al subir imagen: " . $e->getMessage());
         }
     }
-
-    // El siguiente índice será el mayor + 1
-    return $maxIndice + 1;
 }
 
-*/
 
 ?>

@@ -5,10 +5,10 @@ require_once "controladorJson.php";
 
 class heladeriaAlta{
 
-    public static function darAltaHelado($archivo, helado $nuevoHelado) {
+    public static function darAltaHelado($direccionJson, helado $nuevoHelado, $archivoImagen, &$mensaje) {
         try {
-            // Obtiene la instancia del controlador JSON
-            $controlador = controladorJson::getInstance($archivo);
+            // Crea un controlador JSON
+            $controlador = new controladorJson($direccionJson);
         } catch (Exception $e) {
             throw new Exception("Error al obtener la instancia del controlador JSON: " . $e->getMessage());
         }
@@ -21,10 +21,11 @@ class heladeriaAlta{
         }
 
         // Si existe un helado igual, aumenta su stock y actualiza el precio
-        if (self::actualizarObjetoExistente($helados, $nuevoHelado)) {
+        if (self::actualizarHeladoExistente($helados, $nuevoHelado)) {
             try {
                 // Actualiza el json
                 $controlador->actualizarRegistrosEnArchivo($helados);
+                $mensaje =  "Helado actualizado exitosamente.";
             } catch (Exception $e) {
                 throw new Exception("Error al actualizar los registros en el archivo: " . $e->getMessage());
             }
@@ -35,14 +36,15 @@ class heladeriaAlta{
             try {
                 $nuevoHelado->setId(self::obtenerMaximoId($helados) + 1);
                 $controlador->agregarRegistroAlArchivo($nuevoHelado);
-                self::cargarFoto($nuevoHelado->getSabor() . $nuevoHelado->getTipo(), 'ImagenesDeHelados/2024/');
+                controladorJson::cargarFoto($archivoImagen, $nuevoHelado->getSabor() . $nuevoHelado->getTipo(), 'ImagenesDeHelados/2024/');
+                $mensaje = "Helado agregado exitosamente.";
             } catch (Exception $e) {
                 throw new Exception("Error al agregar el nuevo registro al archivo: " . $e->getMessage());
             }
         }
     }
 
-    private static function actualizarObjetoExistente(&$helados, $nuevoHelado) {
+    private static function actualizarHeladoExistente(&$helados, $nuevoHelado) {
         // Recorre la lista de helados para verificar si ya existe uno igual
         foreach ($helados as $helado) {
             if ($nuevoHelado->equals($helado)) {
@@ -54,30 +56,6 @@ class heladeriaAlta{
             }
         }
         return false;
-    }
-
-    public static function cargarFoto($nombre, $destino)
-    {
-        try {
-            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-            
-                // Obtiene la extensión del archivo original
-                $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
-            
-                // Agrega la extensión al nombre específico
-                $imagen_nombre_con_extension = $nombre . '.' . $extension;
-            
-                // Nombre temporal del archivo en el servidor
-                $imagen_tmp_name = $_FILES['imagen']['tmp_name'];
-            
-                // Mueve el archivo desde la ubicación temporal a la carpeta de destino con el nuevo nombre
-                if (!move_uploaded_file($imagen_tmp_name, $destino . $imagen_nombre_con_extension)) {
-                    enviarRespuesta(423, "Error No se pudo subir la imagen.");
-                }
-            }
-        } catch (Exception $e) {
-            throw new Exception("Error al subir imagen: " . $e->getMessage());
-        }
     }
 
     private static function obtenerMaximoId($helados) {
