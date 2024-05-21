@@ -143,8 +143,6 @@ class controladorJson
             die('No se pudo vaciar el archivo');
         }
 
-        echo 'El archivo se ha vaciado correctamente';
-
         // Cierra el archivo
         fclose($gestor);
 

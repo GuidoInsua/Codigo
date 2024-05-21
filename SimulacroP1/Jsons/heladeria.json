@@ -1,30 +1,18 @@
 [
     {
+        "id": 1,
         "sabor": "Pera",
-        "precio": 12341,
+        "precio": 787634,
+        "tipo": "Crema",
+        "vaso": "Plastico",
+        "stock": 132
+    },
+    {
+        "id": 2,
+        "sabor": "Chocolate",
+        "precio": 34526,
         "tipo": "Agua",
         "vaso": "Cucurucho",
-        "stock": 52
-    },
-    {
-        "sabor": "Chocolate",
-        "precio": 12341,
-        "tipo": "Crema",
-        "vaso": "Cucurucho",
-        "stock": 52
-    },
-    {
-        "sabor": "Vainilla",
-        "precio": 12341,
-        "tipo": "Crema",
-        "vaso": "Cucurucho",
-        "stock": 26
-    },
-    {
-        "sabor": "Frutilla",
-        "precio": 12341,
-        "tipo": "Crema",
-        "vaso": "Cucurucho",
-        "stock": 39
+        "stock": 22
     }
 ]

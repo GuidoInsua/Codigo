@@ -3,22 +3,25 @@
 require_once 'jsonDeserializable.php';
 
 class helado implements JsonSerializable, jsonDeserializable{
+    private float $_id;
     private string $_sabor;
-    private float  $_precio;
+    private float $_precio;
     private string $_tipo;
     private string $_vaso;
-    private float  $_stock;
+    private float $_stock;
 
-    public function __construct($sabor, $precio, $tipo, $vaso, $stock) {
-        $this->_sabor = (!empty($sabor)) ? ucfirst(strtolower($sabor)) : " ";
-        $this->_precio = ($precio > 0) ? $precio : 0;
-        $this->_tipo = ($tipo == "Agua" || $tipo == "Crema") ? ucfirst(strtolower($tipo)) : " ";
-        $this->_vaso = ($vaso == "Cucurucho" || $vaso == "Plástico") ? ucfirst(strtolower($vaso)) : " ";
-        $this->_stock = ($stock >= 0) ? $stock : 0;
+    public function __construct($id = 0, $sabor, $precio, $tipo, $vaso, $stock) {
+        $this->_id = $id;
+        $this->_sabor = $sabor;
+        $this->_precio = $precio;
+        $this->_tipo = $tipo;
+        $this->_vaso = $vaso;
+        $this->_stock = $stock;
     }
 
     public function jsonSerialize(): mixed {
         return [
+            'id' => $this->_id,
             'sabor' => $this->_sabor,
             'precio' => $this->_precio,
             'tipo' => $this->_tipo,
@@ -29,6 +32,7 @@ class helado implements JsonSerializable, jsonDeserializable{
 
     public static function jsonDeserialize(array $data): helado {
         return new self(
+            $data['id'],
             $data['sabor'],
             $data['precio'],
             $data['tipo'],
@@ -67,8 +71,20 @@ class helado implements JsonSerializable, jsonDeserializable{
         return $this->_stock;
     }
 
+    public function getId() {
+        return $this->_id;
+    }
+
+    public function setPrecio($precio) {
+        $this->_precio = $precio;
+    }
+
     public function setStock($stock) {
         $this->_stock = $stock;
+    }
+
+    public function setId($id) {
+        $this->_id = $id;
     }
 }
 

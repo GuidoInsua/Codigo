@@ -3,28 +3,65 @@
 require_once "helado.php";
 require_once "heladeriaAlta.php";
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo "405 Error: Método no permitido. Esta API solo acepta solicitudes POST.";
+function enviarRespuesta($codigo, $mensaje) {
+    http_response_code($codigo);
+    echo json_encode(['error' => $mensaje]);
     exit;
 }
 
-if(!isset($_GET['solicitud'])){
-    echo "400 Error: Falta el parámetro 'solicitud' en la solicitud.";
-    exit;
+function validarParametro($parametro, $tipo) {
+    switch ($tipo) {
+        case 'string':
+            return is_string($parametro) && !empty(trim($parametro));
+        case 'float':
+            return is_numeric($parametro) && (float)$parametro > 0;
+        case 'tipo':
+            $parametro = strtolower($parametro);
+            return in_array($parametro, ['agua', 'crema']);
+        case 'vaso':
+            $parametro = strtolower($parametro);
+            return in_array($parametro, ['cucurucho', 'plastico']);
+        case 'int':
+            return filter_var($parametro, FILTER_VALIDATE_INT) !== false && (int)$parametro >= 0;
+        default:
+            return false;
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    enviarRespuesta(405, "Método no permitido. Esta API solo acepta solicitudes POST.");
+}
+
+if (!isset($_GET['solicitud'])) {
+    enviarRespuesta(400, "Falta el parámetro 'solicitud' en la solicitud.");
 }
 
 $solicitud = $_GET['solicitud'];
 
 switch ($solicitud) {
     case 'HeladeriaAlta':
-        if (!isset($_POST["sabor"]) || !isset($_POST["precio"]) || !isset($_POST["tipo"]) || !isset($_POST["vaso"]) || !isset($_POST["stock"])) {
-            echo " 400 Error: Faltan parametros";
-            exit;
+
+        $parametros = ['sabor', 'precio', 'tipo', 'vaso', 'stock'];
+        $tipos = ['string', 'float', 'tipo', 'vaso', 'int'];
+
+        foreach ($parametros as $index => $parametro) {
+            if (!isset($_POST[$parametro]) || !validarParametro($_POST[$parametro], $tipos[$index])) {
+                enviarRespuesta(400, "Parámetro {$parametro} inválido");
+            }
         }
 
-        $nuevoHelado = new helado($_POST["sabor"], $_POST["precio"], $_POST["tipo"], $_POST["vaso"], $_POST["stock"]);
+        $_POST["sabor"] = ucfirst(strtolower(trim($_POST["sabor"])));
+        $_POST["tipo"] = ucfirst(strtolower(trim($_POST["tipo"])));
+        $_POST["vaso"] = ucfirst(strtolower(trim($_POST["vaso"])));
 
-        heladeriaAlta::darAltaHelado("Jsons\heladeria.json", $nuevoHelado);
+        $nuevoHelado = new helado(0, $_POST["sabor"], $_POST["precio"], $_POST["tipo"], $_POST["vaso"], $_POST["stock"]);
+
+        try {
+            heladeriaAlta::darAltaHelado("Jsons/heladeria.json", $nuevoHelado);
+            echo "Helado dado de alta exitosamente.";
+        } catch (Exception $e) {
+            enviarRespuesta(500, "Error: " . $e->getMessage());
+        }
 
         break;
     case 'HeladoConsultar':
@@ -50,10 +87,7 @@ switch ($solicitud) {
 
         break;
     default:
-        echo "404 Error: Solicitud no encontrada.";
-        exit;
-        
+        enviarRespuesta(404, "Solicitud no encontrada.");
         break;
 }
-
 ?>
